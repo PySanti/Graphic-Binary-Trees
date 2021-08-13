@@ -14,5 +14,4 @@ Option 2: this option will run the program with an initial random nodes count
     python3 (instalation path)/execute.py 
     Nodes : nodes_count
 
-
-Note: if you run the program by the second option, consider that the nodes count can not be grater than 30, there is no space in the screen xd
+Note: if you run the program by the second option, consider that the nodes count cannot be greater than 30, it might not be space in the screen xd

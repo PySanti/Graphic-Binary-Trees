@@ -74,7 +74,7 @@ void actualizar_posiciones_de_arbol( tree_node *nuevo_nodo, arbol *arbol_op, lis
 
 
 // lleva a cabo todas las operaciones necesarias para la insercion de un nodo en el arbol, la unica funcion que reune a funciones de listas y arboles
-void procesar_elemento_en_arbol(int number, arbol *arbol_op, lista *nodos );
+int procesar_elemento_en_arbol(int number, arbol *arbol_op, lista *nodos );
 
 
 // retorna true en caso de que element sea un nodo hijo de principal
@@ -106,6 +106,8 @@ char *string_input(int str_len);
 int is_number(char cadena[], int len);
 
 void gotoxy(int x, int y);
+
+void clean_buffer();
 
 
 //* ---------------------------------- DEFINICIONES (ARBOLES)
@@ -146,12 +148,12 @@ tree_node *alguna_descendencia_coincide( tree_node *principal, lista *nodos )
         return NULL;
     }
 }
-void procesar_elemento_en_arbol(int number, arbol *arbol_op, lista *nodos)
+int procesar_elemento_en_arbol(int number, arbol *arbol_op, lista *nodos)
 {
     tree_node *nuevo_nodo = crear_tree_node( number );
-    if (insertar_elemento_arbol( nuevo_nodo, arbol_op ) == 0)
+    if (insertar_elemento_arbol( nuevo_nodo, arbol_op ) == -1)
     {
-        return;
+        return -1;
     }
     else 
     {
@@ -331,16 +333,25 @@ int insertar_elemento_arbol(tree_node *nuevo_tree_node, arbol *arbol)
             }
             else
             {
-                return 0;
+                return -1;
             }
         }
     }
 }
 //* ---------------------------------- DEFINICIONES (OTROS)
+
+
+void clean_buffer()
+{
+    int i;
+    while ( ( i = getchar() ) != NEWLINE );
+}
+
 void gotoxy(int x, int y)
 {
     printf("%c[%d;%df", 0x1B, y, x);
 }
+
 char *string_input(int str_len)
 {
     char *cadena = (char *) calloc(sizeof(char), str_len);
@@ -354,7 +365,7 @@ char *string_input(int str_len)
             return cadena;
         }
     }
-    while ( ( i = getchar() ) != NEWLINE );
+    clean_buffer();
     return cadena;
 }
 int is_number(char cadena[], int len)

@@ -28,7 +28,7 @@ int main(int argc, char **argv)
             mostrar_arbol( arbol_op->raiz );
         while ( 1 )
         {
-            printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            printf("\n");
             printf("-> ");
             if ( cadena != NULL )
             {
@@ -36,14 +36,26 @@ int main(int argc, char **argv)
                 cadena = NULL;
             }
             cadena = string_input(MAX_STR_LEN);
-            if ( is_number(cadena, MAX_STR_LEN) )
+            if ( is_number(cadena, MAX_STR_LEN) && (cadena[0] != '\0'))
             {
                 number = atoi(cadena);
                 break;
             }
-            printf("\nNumero invalido !");
+            else
+            {
+                printf("\nInvalid number !");
+            }
         }
-        procesar_elemento_en_arbol(number, arbol_op, nodos);
+        if (procesar_elemento_en_arbol(number, arbol_op, nodos) == -1)
+        {
+            printf("\nNumber %i has already been typed !", number);
+        }
+        else 
+        {
+            printf("\nSuccesfully insertion!");
+        }
+        printf("\nPress enter to continue ... ");
+        clean_buffer();
     }
     return 0;
 }
