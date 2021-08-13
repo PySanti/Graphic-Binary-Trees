@@ -371,11 +371,24 @@ char *string_input(int str_len)
 int is_number(char cadena[], int len)
 {
     int i;
+    int is_float = 0;
+    int is_negative = 0;
     for ( i = 0; i <  len; i++)
     {
-        if ( !( cadena[ i ] >= '0' && cadena[ i ] <= '9' ) && ( cadena[ i ] != NULL_CHAR ) && ( cadena[ i ] != NEWLINE ))
+        if ( (cadena[ i ] == '-') && ( i == 0  ) )
+        {
+            is_float = 1;
+        }
+        else if ( (cadena[ i ] == '-') && ( is_float || i != 0))
         {
             return 0;
+        }
+        else
+        {
+            if ( !( cadena[ i ] >= '0' && cadena[ i ] <= '9' ) && ( cadena[ i ] != NULL_CHAR ) && ( cadena[ i ] != NEWLINE ))
+            {
+                return 0;
+            }
         }
     }
     return 1;
