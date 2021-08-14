@@ -4,7 +4,7 @@
 
 Usage:
 
-       Option 1: this option will run the program without initial random nodes
+       Option 1: this option will run the program without an initial random nodes count
 
             gcc (instalation path)/main.c 
     
