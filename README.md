@@ -2,6 +2,10 @@
     A terminal program made to see binary trees graphically, 
     all the code made by Santiago De Andrade 07/2021 ( only available for Linux OS)
 
+Download:
+        
+        git clone  https://github.com/PySanti/Graphic-Binary-Trees
+
 Usage:
 
        Option 1: this option will run the program without an initial random nodes count
