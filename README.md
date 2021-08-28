@@ -23,3 +23,5 @@ Option 2: this option will run the program with an initial random nodes count
 Note: if you run the program by the second option, consider that the nodes count cannot be greater than 30, it might not be space in the screen xd.
 
 Note 2: yes, i made all the node-organitation algorith, the key is in the x position of each node, it can never be two nodes with the same position in the x axis .
+
+Note 3: type cntrl+c to kill the process (exit).
